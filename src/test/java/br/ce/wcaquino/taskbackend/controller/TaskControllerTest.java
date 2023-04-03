@@ -47,7 +47,7 @@ public class TaskControllerTest {
       taskController.save(todo);
       Assert.fail("Nao deve ser salvo uma tarefa sem descricao");
     } catch (ValidationException e) {
-      Assert.assertEquals("Due date must not be in past", e.getMessage());
+      Assert.assertEquals("Due date must not be in past xx", e.getMessage());
     }
   }
 
