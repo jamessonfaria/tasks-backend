@@ -21,5 +21,13 @@ pipeline {
                }
             }
         }
+        stage ('Quality Gate') {
+            steps {
+                sleep(5)
+                timeout(time: 1, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true, credentialsId: 'SonarToken'
+                }
+            }
+        }
     }
 }
