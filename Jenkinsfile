@@ -52,6 +52,14 @@ pipeline {
                 
             }
         }
+        stage ('Functional Test') {
+            steps {
+                dir('functional-test') {
+                    git branch: 'main', url: 'https://github.com/jamessonfaria/tasks-functional-test.git'
+                    bat 'mvn test'
+                }
+            }
+        }
     }
 }
 
