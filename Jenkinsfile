@@ -42,6 +42,16 @@ pipeline {
                 }
             }
         }
+        stage ('Deploy Frontend') {
+            steps {
+                dir('frontend') {
+                    git branch: 'master', url: 'https://github.com/jamessonfaria/tasks-frontend.git'
+                    deploy adapters: [tomcat9(credentialsId: 'TomcatLogin', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks', war: 'target/tasks.war'
+                }
+                
+            }
+        }
     }
 }
+
 
